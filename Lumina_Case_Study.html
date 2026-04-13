@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumina Skincare — Email Campaign Case Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #C8637A;
+    --rose-deep: #9E3F56;
+    --rose-pale: #F7E8EC;
+    --gold: #C4965A;
+    --cream: #FBF6F1;
+    --ink: #1C1212;
+    --muted: #7A6868;
+    --border: #E8D8D0;
+    --white: #FFFCFA;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 60%, rgba(200,99,122,0.15) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 80% 30%, rgba(196,150,90,0.10) 0%, transparent 70%);
+  }
+
+  /* Subtle grain texture */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s ease forwards;
+  }
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--rose);
+    opacity: 0.5;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 80px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.08;
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.35s ease forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 3vw, 28px);
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(251,246,241,0.45);
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.5s ease forwards;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.65s ease forwards;
+  }
+
+  .hero-meta-item {
+    text-align: center;
+  }
+  .hero-meta-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(251,246,241,0.3);
+    margin-bottom: 6px;
+  }
+  .hero-meta-value {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(251,246,241,0.75);
+    letter-spacing: 0.5px;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s ease forwards;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    background: var(--rose);
+    color: white;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--rose-deep); transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    background: transparent;
+    color: rgba(251,246,241,0.6);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    border: 1px solid rgba(251,246,241,0.15);
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { border-color: rgba(251,246,241,0.4); color: rgba(251,246,241,0.9); }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeUp 1s 1.2s ease forwards;
+  }
+  .scroll-hint span {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(251,246,241,0.2);
+  }
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(200,99,122,0.6), transparent);
+    animation: scrollPulse 2s 1.5s ease-in-out infinite;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 100px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 60px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .section-title em { font-style: italic; color: var(--rose); }
+
+  .section-body {
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--muted);
+    max-width: 620px;
+  }
+
+  /* ── PROBLEM / SOLUTION SPLIT ── */
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin: 80px 0;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .split-panel {
+    padding: 48px 40px;
+    position: relative;
+  }
+
+  .split-panel.dark {
+    background: var(--ink);
+  }
+  .split-panel.light {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: none;
+  }
+
+  .split-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .split-panel.dark .split-label { color: var(--rose); }
+  .split-panel.light .split-label { color: var(--gold); }
+
+  .split-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .split-panel.dark .split-heading { color: var(--white); }
+  .split-panel.light .split-heading { color: var(--ink); }
+
+  .split-text {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .split-panel.dark .split-text { color: rgba(251,246,241,0.55); }
+  .split-panel.light .split-text { color: var(--muted); }
+
+  .big-stat {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: var(--rose);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  /* ── STRATEGY PILLARS ── */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .pillar {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 40px 32px;
+    position: relative;
+    transition: transform 0.2s;
+  }
+  .pillar:hover { transform: translateY(-4px); z-index: 1; box-shadow: 0 16px 48px rgba(28,18,18,0.1); }
+
+  .pillar-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--rose-pale);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .pillar-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .pillar-text {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+
+  /* ── SEQUENCE TABLE ── */
+  .seq-table {
+    margin-top: 60px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .seq-header {
+    display: grid;
+    grid-template-columns: 80px 1fr 160px 140px;
+    background: var(--ink);
+    padding: 16px 24px;
+    gap: 16px;
+  }
+
+  .seq-header-cell {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(251,246,241,0.35);
+  }
+
+  .seq-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 160px 140px;
+    padding: 18px 24px;
+    gap: 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--white);
+    align-items: center;
+    transition: background 0.15s;
+  }
+  .seq-row:last-child { border-bottom: none; }
+  .seq-row:hover { background: var(--cream); }
+  .seq-row.abandon { border-left: 3px solid var(--rose); }
+  .seq-row.welcome { border-left: 3px solid var(--gold); }
+
+  .seq-code {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--rose);
+  }
+  .seq-row.welcome .seq-code { color: var(--gold); }
+
+  .seq-name { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+  .seq-subject { font-size: 12px; color: var(--muted); font-style: italic; }
+  .seq-timing { font-size: 12px; color: var(--muted); }
+  .seq-lever {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--rose);
+    background: var(--rose-pale);
+    padding: 4px 10px;
+    border-radius: 20px;
+    display: inline-block;
+  }
+  .seq-row.welcome .seq-lever { color: var(--gold); background: #FBF0E4; }
+
+  /* ── RESULTS PROJECTIONS ── */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .metric {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 36px 28px;
+    text-align: center;
+  }
+
+  .metric-before {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(122,104,104,0.5);
+    margin-bottom: 4px;
+  }
+
+  .metric-before-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: rgba(122,104,104,0.4);
+    text-decoration: line-through;
+    text-decoration-color: rgba(200,99,122,0.4);
+    margin-bottom: 16px;
+  }
+
+  .metric-after-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 4px;
+  }
+
+  .metric-after-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .metric-label {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* ── LIBRARY CTA SECTION ── */
+  .library-cta {
+    background: var(--ink);
+    padding: 100px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .library-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 50% 80% at 50% 100%, rgba(200,99,122,0.12) 0%, transparent 70%);
+  }
+
+  .library-cta-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .library-cta-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 24px;
+  }
+
+  .library-cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 5vw, 52px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .library-cta-title em { font-style: italic; color: var(--rose); }
+
+  .library-cta-text {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(251,246,241,0.5);
+    margin-bottom: 40px;
+  }
+
+  .library-preview-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+
+  .library-pill {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(251,246,241,0.12);
+    color: rgba(251,246,241,0.45);
+  }
+  .library-pill.rose { border-color: rgba(200,99,122,0.4); color: var(--rose); }
+  .library-pill.gold { border-color: rgba(196,150,90,0.4); color: var(--gold); }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 40px;
+    text-align: center;
+  }
+
+  .footer-text {
+    font-size: 12px;
+    color: rgba(251,246,241,0.2);
+    line-height: 1.8;
+  }
+
+  /* ── DIVIDER ── */
+  .ornament-divider {
+    text-align: center;
+    padding: 60px 0 0;
+    color: var(--border);
+    font-size: 18px;
+    letter-spacing: 12px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .split { grid-template-columns: 1fr; }
+    .split-panel.light { border-left: 1px solid var(--border); border-top: none; }
+    .pillars { grid-template-columns: 1fr; }
+    .metrics { grid-template-columns: 1fr 1fr; }
+    .seq-header, .seq-row { grid-template-columns: 60px 1fr; }
+    .seq-timing, .seq-lever { display: none; }
+    .section { padding: 60px 24px; }
+    .hero { padding: 60px 24px; }
+    .library-cta { padding: 60px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Case Study · Copywriting Portfolio</div>
+    <h1 class="hero-title">Lumina <em>Skincare</em></h1>
+    <p class="hero-subtitle">DTC Email Campaign — Cart Recovery & Welcome Series</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Industry</div>
+        <div class="hero-meta-value">Beauty & Skincare DTC</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Deliverable</div>
+        <div class="hero-meta-value">12-Email Sequence</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Type</div>
+        <div class="hero-meta-value">Conversion Copywriting</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Sequences</div>
+        <div class="hero-meta-value">Abandonment + Welcome</div>
+      </div>
+    </div>
+    <div class="hero-cta-group">
+      <a href="Lumina_Email_Templates.html" class="btn-primary" target="_blank">
+        View Email Library →
+      </a>
+      <a href="#overview" class="btn-ghost">Read Case Study ↓</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ── OVERVIEW ── -->
+<div id="overview" class="section">
+  <div class="reveal">
+    <div class="section-eyebrow">The Brief</div>
+    <h2 class="section-title">A brand with great products<br>and a <em>leaking</em> checkout</h2>
+    <p class="section-body">Lumina Skincare came with a clear problem: a 74% cart abandonment rate and zero recovery infrastructure in place. Every customer who made it to checkout and didn't buy was gone forever — no follow-up, no second chance, no revenue recovered.</p>
+  </div>
+
+  <div class="split reveal">
+    <div class="split-panel dark">
+      <div class="split-label">The Problem</div>
+      <div class="big-stat">74%</div>
+      <h3 class="split-heading">Cart abandonment with no recovery system</h3>
+      <p class="split-text">No follow-up emails. No welcome sequence. No second chance to convert warm, interested buyers. Revenue walking out the door, daily.</p>
+    </div>
+    <div class="split-panel light">
+      <div class="split-label">The Opportunity</div>
+      <h3 class="split-heading">Two precision-built sequences to plug the leak</h3>
+      <p class="split-text">A 5-part cart abandonment recovery flow and a 7-part welcome series — both engineered to turn hesitation into conviction, and browsers into buyers.</p>
+      <div style="margin-top:24px;display:flex;gap:16px;flex-wrap:wrap;">
+        <div style="font-size:13px;color:var(--muted);"><span style="color:var(--rose);font-weight:700;">5 emails</span><br>Abandonment recovery</div>
+        <div style="font-size:13px;color:var(--muted);"><span style="color:var(--gold);font-weight:700;">7 emails</span><br>Welcome series</div>
+        <div style="font-size:13px;color:var(--muted);"><span style="color:var(--ink);font-weight:700;">12 total</span><br>Production-ready</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── STRATEGY ── -->
+<div style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section">
+    <div class="reveal">
+      <div class="section-eyebrow">The Strategy</div>
+      <h2 class="section-title">Three pillars.<br>Every email. No <em>exceptions.</em></h2>
+      <p class="section-body">Rather than treating each email as an isolated send, every message in this sequence was architected around the same three conversion levers — layered differently depending on where the customer is in the journey.</p>
+    </div>
+
+    <div class="pillars reveal">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Urgency</div>
+        <p class="pillar-text">Real scarcity, expiring offers, and psychological triggers that move people from "I'll think about it" to "I need this now." No fake countdown timers — only honest, meaningful urgency that protects long-term brand trust.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">Social Proof</div>
+        <p class="pillar-text">Real customer voices, demographic-specific testimonials, and credibility signals that answer the one question every hesitant buyer is silently asking: "Does this actually work for someone like me?"</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">Brand Story</div>
+        <p class="pillar-text">A founder-led narrative that builds emotional connection before asking for a sale. Customers don't buy products — they buy into people and missions they believe in. Every email earns trust before it asks for a conversion.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SEQUENCE BREAKDOWN ── -->
+<div class="section">
+  <div class="reveal">
+    <div class="section-eyebrow">The Sequences</div>
+    <h2 class="section-title">12 emails.<br>One <em>seamless</em> system.</h2>
+    <p class="section-body">Each email has a single job. A single emotional lever. A single call to action. Here's the full sequence architecture.</p>
+  </div>
+
+  <div class="seq-table reveal">
+    <div class="seq-header">
+      <div class="seq-header-cell">Code</div>
+      <div class="seq-header-cell">Email</div>
+      <div class="seq-header-cell">Timing</div>
+      <div class="seq-header-cell">Primary Lever</div>
+    </div>
+
+    <!-- Abandonment -->
+    <div class="seq-row abandon">
+      <div class="seq-code">A1</div>
+      <div><div class="seq-name">The Gentle Nudge</div><div class="seq-subject">"Did something happen? Your cart is still here 🌸"</div></div>
+      <div class="seq-timing">1 hr after abandon</div>
+      <div><span class="seq-lever">Curiosity</span></div>
+    </div>
+    <div class="seq-row abandon">
+      <div class="seq-code">A2</div>
+      <div><div class="seq-name">Social Proof & FOMO</div><div class="seq-subject">"14,000+ women can't stop talking about this"</div></div>
+      <div class="seq-timing">24 hours</div>
+      <div><span class="seq-lever">FOMO</span></div>
+    </div>
+    <div class="seq-row abandon">
+      <div class="seq-code">A3</div>
+      <div><div class="seq-name">The Offer</div><div class="seq-subject">"A little something for you (expires in 24hrs) ⏳"</div></div>
+      <div class="seq-timing">48 hours</div>
+      <div><span class="seq-lever">Incentive</span></div>
+    </div>
+    <div class="seq-row abandon">
+      <div class="seq-code">A4</div>
+      <div><div class="seq-name">Urgency Escalation</div><div class="seq-subject">"Your 15% off expires tonight. Don't miss it."</div></div>
+      <div class="seq-timing">72 hours</div>
+      <div><span class="seq-lever">Scarcity</span></div>
+    </div>
+    <div class="seq-row abandon">
+      <div class="seq-code">A5</div>
+      <div><div class="seq-name">Last Chance</div><div class="seq-subject">"We're clearing your cart today."</div></div>
+      <div class="seq-timing">96 hours</div>
+      <div><span class="seq-lever">Loss Aversion</span></div>
+    </div>
+
+    <!-- Welcome -->
+    <div class="seq-row welcome">
+      <div class="seq-code">W1</div>
+      <div><div class="seq-name">Welcome & Brand Story</div><div class="seq-subject">"Welcome to Lumina — I'm glad you're here 🌸"</div></div>
+      <div class="seq-timing">Immediate</div>
+      <div><span class="seq-lever">Emotional Bond</span></div>
+    </div>
+    <div class="seq-row welcome">
+      <div class="seq-code">W2</div>
+      <div><div class="seq-name">The Lumina Method</div><div class="seq-subject">"Why most skincare fails (and what we do differently)"</div></div>
+      <div class="seq-timing">Day 2</div>
+      <div><span class="seq-lever">Education</span></div>
+    </div>
+    <div class="seq-row welcome">
+      <div class="seq-code">W3</div>
+      <div><div class="seq-name">Meet the Ingredients</div><div class="seq-subject">"Meet the 3 ingredients behind your glow ✨"</div></div>
+      <div class="seq-timing">Day 4</div>
+      <div><span class="seq-lever">Credibility</span></div>
+    </div>
+    <div class="seq-row welcome">
+      <div class="seq-code">W4</div>
+      <div><div class="seq-name">Real Results</div><div class="seq-subject">"She was sceptical too. Then this happened."</div></div>
+      <div class="seq-timing">Day 6</div>
+      <div><span class="seq-lever">Social Proof</span></div>
+    </div>
+    <div class="seq-row welcome">
+      <div class="seq-code">W5</div>
+      <div><div class="seq-name">The VIP Offer</div><div class="seq-subject">"Your exclusive Lumina VIP offer (48 hrs only)"</div></div>
+      <div class="seq-timing">Day 8</div>
+      <div><span class="seq-lever">Exclusivity</span></div>
+    </div>
+    <div class="seq-row welcome">
+      <div class="seq-code">W6</div>
+      <div><div class="seq-name">Handle Objections</div><div class="seq-subject">"Be honest with us. What's holding you back?"</div></div>
+      <div class="seq-timing">Day 10</div>
+      <div><span class="seq-lever">Trust</span></div>
+    </div>
+    <div class="seq-row welcome">
+      <div class="seq-code">W7</div>
+      <div><div class="seq-name">Final Invitation</div><div class="seq-subject">"This is the last email in your Lumina welcome series."</div></div>
+      <div class="seq-timing">Day 12</div>
+      <div><span class="seq-lever">Urgency</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PROJECTED RESULTS ── -->
+<div style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section">
+    <div class="reveal">
+      <div class="section-eyebrow">Projected Impact</div>
+      <h2 class="section-title">What good copy<br>actually <em>moves.</em></h2>
+      <p class="section-body">Based on industry benchmarks for DTC beauty brands running well-structured email sequences. Targets set conservatively — a strong sequence typically outperforms these within 90 days.</p>
+    </div>
+
+    <div class="metrics reveal">
+      <div class="metric">
+        <div class="metric-before">Was</div>
+        <div class="metric-before-val">0%</div>
+        <div class="metric-after-label">Target</div>
+        <div class="metric-after-val">8–15%</div>
+        <div class="metric-label">Cart recovery rate</div>
+      </div>
+      <div class="metric">
+        <div class="metric-before">Industry avg</div>
+        <div class="metric-before-val">40%</div>
+        <div class="metric-after-label">Target</div>
+        <div class="metric-after-val">55–65%</div>
+        <div class="metric-label">Email open rate</div>
+      </div>
+      <div class="metric">
+        <div class="metric-before">Industry avg</div>
+        <div class="metric-before-val">4%</div>
+        <div class="metric-after-label">Target</div>
+        <div class="metric-after-val">6–12%</div>
+        <div class="metric-label">Click-through rate</div>
+      </div>
+      <div class="metric">
+        <div class="metric-before">Was</div>
+        <div class="metric-before-val">$0</div>
+        <div class="metric-after-label">Target</div>
+        <div class="metric-after-val">$0.30+</div>
+        <div class="metric-label">Revenue per email sent</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── LIBRARY CTA ── -->
+<div class="library-cta">
+  <div class="library-cta-inner">
+    <div class="library-cta-eyebrow">✦ The Deliverable</div>
+    <h2 class="library-cta-title">12 emails.<br><em>One cohesive voice.</em></h2>
+    <p class="library-cta-text">Browse the full email library — each sequence written to reflect Lumina's warm, founder-led brand identity while moving customers closer to conversion at every step.</p>
+    <div class="library-preview-pills">
+      <span class="library-pill rose">5 Abandonment Emails</span>
+      <span class="library-pill gold">7 Welcome Emails</span>
+      <span class="library-pill">Subject Lines</span>
+      <span class="library-pill">Full Body Copy</span>
+      <span class="library-pill">Live Previews</span>
+    </div>
+    <a href="Lumina_Email_Templates.html" class="btn-primary" target="_blank" style="font-size:12px;padding:18px 40px;">
+      Open Email Library →
+    </a>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<div class="footer">
+  <p class="footer-text">
+    Lumina Skincare · DTC Email Campaign · Copywriting Portfolio Case Study<br>
+    Campaign strategy, copy, and template design by Dana
+  </p>
+</div>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
