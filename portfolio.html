@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio · Your Name · Copywriter</title>
+  <meta name="description"
+    content="Portfolio of copywriting and content work — website copy, email campaigns, SEO content, and brand voice projects." />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Rasa:wght@300;400;500;600&display=swap');
+
+    :root {
+      --sage: #7D9B76;
+      --sage-light: #A8C4A2;
+      --sage-pale: #E8F0E6;
+      --sage-dark: #4F6B4A;
+      --white: #FFFFFF;
+      --off-white: #F8FAF7;
+      --text-dark: #1E2A1C;
+      --text-mid: #4A5547;
+      --text-light: #7A8877;
+      --border: #D6E3D4;
+      --shadow: rgba(77, 107, 74, 0.12);
+      --shadow-lg: rgba(77, 107, 74, 0.2)
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'Rasa', serif;
+      font-weight: 400;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.7;
+      font-size: 1.05rem
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+      color: var(--text-dark)
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem)
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem)
+    }
+
+    h3 {
+      font-size: clamp(1.2rem, 2vw, 1.6rem)
+    }
+
+    h4 {
+      font-size: 1.15rem
+    }
+
+    h5 {
+      font-size: 1rem
+    }
+
+    h6 {
+      font-size: 0.85rem;
+      letter-spacing: 0.1em
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-mid)
+    }
+
+    a {
+      color: var(--sage-dark);
+      text-decoration: none;
+      transition: color 0.2s
+    }
+
+    a:hover {
+      color: var(--sage)
+    }
+
+    .btn {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.82rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.8rem;
+      border-radius: 2px;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: none;
+      text-decoration: none
+    }
+
+    .btn-primary {
+      background: var(--sage);
+      color: var(--white);
+      box-shadow: 0 2px 12px var(--shadow)
+    }
+
+    .btn-primary:hover {
+      background: var(--sage-dark);
+      color: var(--white);
+      box-shadow: 0 4px 20px var(--shadow-lg);
+      transform: translateY(-1px)
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--sage-dark);
+      border: 1.5px solid var(--sage)
+    }
+
+    .btn-outline:hover {
+      background: var(--sage-pale);
+      color: var(--sage-dark);
+      transform: translateY(-1px)
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-mid);
+      border: 1.5px solid var(--border);
+      padding: 0.6rem 1.2rem
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--sage);
+      color: var(--sage-dark);
+      background: var(--sage-pale)
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s
+    }
+
+    nav.scrolled {
+      box-shadow: 0 2px 24px var(--shadow)
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between
+    }
+
+    .nav-logo {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--sage-dark)
+    }
+
+    .nav-logo span {
+      color: var(--sage)
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none
+    }
+
+    .nav-links a {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      color: var(--text-mid);
+      position: relative;
+      padding-bottom: 2px
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--sage);
+      transition: width 0.25s
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--sage-dark)
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text-dark);
+      transition: all 0.3s
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem
+    }
+
+    .section {
+      padding: 6rem 0
+    }
+
+    .section-sm {
+      padding: 4rem 0
+    }
+
+    .section-label {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.72rem;
+      color: var(--sage);
+      margin-bottom: 0.8rem;
+      display: block
+    }
+
+    .section-header {
+      margin-bottom: 3.5rem
+    }
+
+    .section-header p {
+      font-size: 1.1rem;
+      max-width: 600px
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, var(--off-white) 0%, var(--sage-pale) 100%);
+      padding: 8rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+      margin-top: 70px
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--sage-light) 0%, transparent 70%);
+      opacity: 0.3
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+      padding-top: 70px;
+      background: linear-gradient(160deg, var(--white) 60%, var(--sage-pale) 100%);
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--sage-pale) 0%, transparent 70%);
+      pointer-events: none
+    }
+
+    .hero-content {
+      padding: 4rem 0 4rem 2rem;
+      max-width: 640px;
+      margin-left: auto
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--sage-pale);
+      color: var(--sage-dark);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.72rem;
+      padding: 0.4rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--sage-light)
+    }
+
+    .hero h1 {
+      margin-bottom: 0.4rem
+    }
+
+    .hero h1 span {
+      color: var(--sage)
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-mid);
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+      font-family: 'Rasa', serif
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap
+    }
+
+    .hero-visual {
+      height: 100%;
+      min-height: 100vh;
+      background: var(--sage-pale);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden
+    }
+
+    .hero-card {
+      background: white;
+      border-radius: 4px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 60px var(--shadow-lg);
+      width: 340px;
+      position: relative;
+      z-index: 2;
+      animation: float 6s ease-in-out infinite
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-12px)
+      }
+    }
+
+    .hero-card-label {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--sage);
+      margin-bottom: 1.2rem
+    }
+
+    .stat-row {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem
+    }
+
+    .stat-item {
+      flex: 1
+    }
+
+    .stat-num {
+      font-family: 'Barlow', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--sage-dark);
+      line-height: 1
+    }
+
+    .stat-unit {
+      font-size: 1rem;
+      color: var(--sage)
+    }
+
+    .stat-desc {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 0.2rem;
+      font-family: 'Rasa', serif
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem
+    }
+
+    .skill-tag {
+      background: var(--sage-pale);
+      color: var(--sage-dark);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.3rem 0.7rem;
+      border-radius: 2px
+    }
+
+    .hero-deco-1 {
+      position: absolute;
+      top: 10%;
+      right: 5%;
+      width: 80px;
+      height: 80px;
+      border: 2px solid var(--sage-light);
+      border-radius: 50%;
+      opacity: 0.5
+    }
+
+    .hero-deco-2 {
+      position: absolute;
+      bottom: 15%;
+      left: 8%;
+      width: 40px;
+      height: 40px;
+      background: var(--sage-light);
+      opacity: 0.4;
+      transform: rotate(45deg)
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      transition: all 0.3s ease
+    }
+
+    .card:hover {
+      border-color: var(--sage-light);
+      box-shadow: 0 8px 32px var(--shadow);
+      transform: translateY(-4px)
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--sage-pale);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+      font-size: 1.3rem
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem
+    }
+
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: var(--sage);
+      margin: 1.2rem 0;
+      border-radius: 2px
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--sage-pale);
+      color: var(--sage-dark);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.65rem;
+      border-radius: 2px;
+      border: 1px solid var(--border)
+    }
+
+    footer {
+      background: var(--text-dark);
+      color: var(--sage-pale);
+      padding: 3rem 0
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem
+    }
+
+    .footer-logo {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--sage-pale)
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none
+    }
+
+    .footer-links a {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-light);
+      transition: color 0.2s
+    }
+
+    .footer-links a:hover {
+      color: var(--sage-light)
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      width: 100%;
+      text-align: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: 1rem
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem
+    }
+
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column
+    }
+
+    .project-card:hover {
+      border-color: var(--sage-light);
+      box-shadow: 0 12px 40px var(--shadow);
+      transform: translateY(-6px)
+    }
+
+    .project-thumb {
+      height: 200px;
+      background: linear-gradient(135deg, var(--sage-pale) 0%, var(--sage-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      position: relative;
+      overflow: hidden
+    }
+
+    .project-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.08) 100%)
+    }
+
+    .project-type-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--white);
+      color: var(--sage-dark);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      z-index: 1
+    }
+
+    .project-body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column
+    }
+
+    .project-body h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem
+    }
+
+    .project-body p {
+      font-size: 0.9rem;
+      flex: 1;
+      margin-bottom: 1.2rem
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.7rem
+    }
+
+    .project-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 4rem;
+      align-items: start
+    }
+
+    .project-sidebar {
+      position: sticky;
+      top: 90px
+    }
+
+    .sidebar-box {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.8rem;
+      margin-bottom: 1.5rem
+    }
+
+    .sidebar-box h5 {
+      margin-bottom: 1rem;
+      color: var(--sage-dark);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em
+    }
+
+    .sidebar-list {
+      list-style: none
+    }
+
+    .sidebar-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-mid);
+      gap: 0.5rem
+    }
+
+    .sidebar-list li:last-child {
+      border-bottom: none
+    }
+
+    .sidebar-list li strong {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-light);
+      flex-shrink: 0
+    }
+
+    .project-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0
+    }
+
+    .gallery-img {
+      background: linear-gradient(135deg, var(--sage-pale), var(--sage-light));
+      border-radius: 4px;
+      aspect-ratio: 16/10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid var(--border)
+    }
+
+    .gallery-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    .gallery-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--sage-dark);
+      text-align: center;
+      padding: 1rem
+    }
+
+    .gallery-placeholder span {
+      font-size: 2.5rem
+    }
+
+    .gallery-placeholder p {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-light);
+      margin: 0
+    }
+
+    .project-nav-links {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border)
+    }
+
+    .samples-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem
+    }
+
+    .sample-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      transition: all 0.25s;
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      color: inherit
+    }
+
+    .sample-card:hover {
+      border-color: var(--sage);
+      box-shadow: 0 4px 20px var(--shadow);
+      transform: translateY(-3px)
+    }
+
+    .sample-icon {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      background: var(--sage-pale);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem
+    }
+
+    .sample-info h4 {
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem
+    }
+
+    .sample-info p {
+      font-size: 0.83rem;
+      color: var(--text-light);
+      margin: 0
+    }
+
+    .sample-link {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--sage);
+      margin-top: 0.6rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem
+    }
+
+    .cv-layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 4rem;
+      align-items: start
+    }
+
+    .cv-sidebar {
+      position: sticky;
+      top: 90px
+    }
+
+    .cv-section {
+      margin-bottom: 3rem
+    }
+
+    .cv-section-title {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--sage);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--sage-pale)
+    }
+
+    .cv-item {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .cv-item:last-child {
+      border-bottom: none
+    }
+
+    .cv-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.4rem;
+      flex-wrap: wrap
+    }
+
+    .cv-item-title {
+      font-size: 1rem;
+      margin: 0
+    }
+
+    .cv-item-date {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--sage);
+      white-space: nowrap;
+      background: var(--sage-pale);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px
+    }
+
+    .cv-item-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 0.6rem;
+      font-style: italic
+    }
+
+    .cv-item ul {
+      list-style: none;
+      padding: 0
+    }
+
+    .cv-item ul li {
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      padding: 0.3rem 0 0.3rem 1.2rem;
+      position: relative
+    }
+
+    .cv-item ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--sage)
+    }
+
+    .skills-sidebar {
+      background: var(--off-white);
+      border-radius: 4px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem
+    }
+
+    .skills-sidebar h3 {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--sage);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--sage-pale)
+    }
+
+    .skills-group {
+      margin-bottom: 1.5rem
+    }
+
+    .skills-group h4 {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-light);
+      margin-bottom: 0.8rem
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 0.8rem;
+      font-size: 0.88rem;
+      color: var(--text-mid)
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem
+    }
+
+    .filter-btn {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.45rem 1rem;
+      border-radius: 2px;
+      cursor: pointer;
+      border: 1.5px solid var(--border);
+      background: white;
+      color: var(--text-mid);
+      transition: all 0.2s
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--sage);
+      border-color: var(--sage);
+      color: white
+    }
+
+    .bg-pale {
+      background: var(--off-white)
+    }
+
+    .bg-sage-pale {
+      background: var(--sage-pale)
+    }
+
+    .text-sage {
+      color: var(--sage)
+    }
+
+    .text-center {
+      text-align: center
+    }
+
+    .mb-0 {
+      margin-bottom: 0
+    }
+
+    .mt-2 {
+      margin-top: 2rem
+    }
+
+    .mt-3 {
+      margin-top: 3rem
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .stagger-1 {
+      transition-delay: 0.1s
+    }
+
+    .stagger-2 {
+      transition-delay: 0.2s
+    }
+
+    .stagger-3 {
+      transition-delay: 0.3s
+    }
+
+    @media(max-width:960px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 100px 0 4rem
+      }
+
+      .hero-visual {
+        min-height: 400px;
+        height: 400px
+      }
+
+      .hero-content {
+        padding: 0 2rem;
+        margin: 0 auto
+      }
+
+      .grid-3,
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .cv-layout {
+        grid-template-columns: 1fr
+      }
+
+      .cv-sidebar {
+        position: static
+      }
+
+      .project-detail-grid {
+        grid-template-columns: 1fr
+      }
+
+      .project-sidebar {
+        position: static
+      }
+    }
+
+    @media(max-width:640px) {
+      .nav-links {
+        display: none
+      }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: white;
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 2rem 2rem;
+        gap: 1rem;
+        box-shadow: 0 8px 24px var(--shadow)
+      }
+
+      .hamburger {
+        display: flex
+      }
+
+      .grid-2,
+      .grid-3,
+      .portfolio-grid,
+      .samples-grid,
+      .project-gallery {
+        grid-template-columns: 1fr
+      }
+
+      .grid-4 {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .stat-row {
+        flex-wrap: wrap
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center
+      }
+
+      .footer-links {
+        justify-content: center;
+        flex-wrap: wrap
+      }
+
+      .project-nav-links {
+        flex-direction: column;
+        gap: 1rem
+      }
+
+      h1 {
+        font-size: 2rem
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="nav-ph"></div>
+
+  <div class="page-header">
+    <div class="container">
+      <span class="section-label">✦ My Work</span>
+      <h1>Portfolio</h1>
+      <div class="divider"></div>
+      <p style="max-width:580px;font-size:1.05rem;">Seven projects spanning website copywriting, email campaigns, brand
+        voice, and SEO content — each one built around a client's specific goals.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="website">Website Copy</button>
+        <button class="filter-btn" data-filter="email">Email</button>
+        <button class="filter-btn" data-filter="brand">Brand Voice</button>
+        <button class="filter-btn" data-filter="seo">SEO Content</button>
+      </div>
+      <div class="portfolio-grid">
+        <div class="project-card fade-up" data-category="website">
+          <div class="project-thumb" style="background:linear-gradient(135deg,#e8f0e6,#a8c4a2);"><span
+              style="font-size:2.5rem;">💻</span><span class="project-type-badge">Website Copy</span></div>
+          <div class="project-body">
+            <h3>Project Title One</h3>
+            <p>Add your project description here — who the client is and what copy you delivered.</p>
+            <div class="project-meta"><span class="tag">SaaS</span><span class="tag">Web Copy</span><span
+                class="tag">Landing Page</span></div>
+            <div class="project-links"><a href="project-1.html" class="btn btn-primary"
+                style="font-size:0.72rem;padding:0.55rem 1rem;">Case Study →</a></div>
+          </div>
+        </div>
+        <div class="project-card fade-up stagger-1" data-category="website">
+          <div class="project-thumb" style="background:linear-gradient(135deg,#d4e4d2,#7d9b76);"><span
+              style="font-size:2.5rem;">🌐</span><span class="project-type-badge">Website Copy</span></div>
+          <div class="project-body">
+            <h3>Project Title Two</h3>
+            <p>Add your project description here — who the client is and what copy you delivered.</p>
+            <div class="project-meta"><span class="tag">B2B</span><span class="tag">Web Copy</span><span
+                class="tag">About Page</span></div>
+            <div class="project-links"><a href="project-2.html" class="btn btn-primary"
+                style="font-size:0.72rem;padding:0.55rem 1rem;">Case Study →</a></div>
+          </div>
+        </div>
+        <div class="project-card fade-up stagger-2" data-category="brand website">
+          <div class="project-thumb" style="background:linear-gradient(135deg,#c4d9c2,#4f6b4a);"><span
+              style="font-size:2.5rem;">🔊</span><span class="project-type-badge">Brand Voice</span></div>
+          <div class="project-body">
+            <h3>Project Title Three</h3>
+            <p>Add your project description — brand voice guide and web copy delivered.</p>
+            <div class="project-meta"><span class="tag">Personal Brand</span><span class="tag">Brand Voice</span><span
+                class="tag">Web Copy</span></div>
+            <div class="project-links"><a href="project-3.html" class="btn btn-primary"
+                style="font-size:0.72rem;padding:0.55rem 1rem;">Case Study →</a></div>
+          </div>
+        </div>
+        <div class="project-card fade-up" data-category="seo website">
+          <div class="project-thumb" style="background:linear-gradient(135deg,#e0eede,#9ab898);"><span
+              style="font-size:2.5rem;">📈</span><span class="project-type-badge">SEO Content</span></div>
+          <div class="project-body">
+            <h3>Project Title Four</h3>
+            <p>Add your project description — SEO strategy, content produced, and results achieved.</p>
+            <div class="project-meta"><span class="tag">SaaS</span><span class="tag">SEO</span><span
+                class="tag">Blog</span></div>
+            <div class="project-links"><a href="project-4.html" class="btn btn-primary"
+                style="font-size:0.72rem;padding:0.55rem 1rem;">Case Study →</a></div>
+          </div>
+        </div>
+        <div class="project-card fade-up stagger-1" data-category="website">
+          <div class="project-thumb" style="background:linear-gradient(135deg,#d8e8d6,#6a8c68);"><span
+              style="font-size:2.5rem;">✨</span><span class="project-type-badge">Website Copy</span></div>
+          <div class="project-body">
+            <h3>Project Title Five</h3>
+            <p>Add your project description — who the client is and what copy you delivered.</p>
+            <div class="project-meta"><span class="tag">B2B</span><span class="tag">Web Copy</span><span
+                class="tag">Services</span></div>
+            <div class="project-links"><a href="project-5.html" class="btn btn-primary"
+                style="font-size:0.72rem;padding:0.55rem 1rem;">Case Study →</a></div>
+          </div>
+        </div>
+        <div class="project-card fade-up stagger-2" data-category="website brand">
+          <div class="project-thumb" style="background:linear-gradient(135deg,#cfdecD,#5a7a58);"><span
+              style="font-size:2.5rem;">🏆</span><span class="project-type-badge">Website Copy</span></div>
+          <div class="project-body">
+            <h3>Project Title Six</h3>
+            <p>Add your project description — personal brand site copy and positioning work.</p>
+            <div class="project-meta"><span class="tag">Personal Brand</span><span class="tag">Web Copy</span></div>
+            <div class="project-links"><a href="project-6.html" class="btn btn-primary"
+                style="font-size:0.72rem;padding:0.55rem 1rem;">Case Study →</a></div>
+          </div>
+        </div>
+        <div class="project-card fade-up" data-category="email" style="grid-column:1/-1;">
+          <div class="project-thumb" style="background:linear-gradient(135deg,#e8f0e6,#7d9b76);height:160px;"><span
+              style="font-size:2.5rem;">✉️</span><span class="project-type-badge">DTC Email Campaign</span></div>
+          <div class="project-body">
+            <h3>DTC Email Campaign</h3>
+            <p>A complete direct-to-consumer email campaign — welcome series, nurture flow, and promotional emails. Add
+              the brand name, goals, and results here.</p>
+            <div class="project-meta"><span class="tag">DTC</span><span class="tag">Email Campaign</span><span
+                class="tag">Welcome Series</span><span class="tag">Nurture Flow</span></div>
+            <div class="project-links"><a href="project-7.html" class="btn btn-primary"
+                style="font-size:0.72rem;padding:0.55rem 1rem;">Full Case Study →</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section bg-pale" id="writing-samples">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">✦ Writing Samples</span>
+        <h2>SEO Content Samples</h2>
+        <div class="divider"></div>
+        <p>A selection of published SEO content pieces. Click to read each piece.</p>
+      </div>
+      <div class="samples-grid">
+        <a href="#" class="sample-card" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+          <div class="sample-icon">📝</div>
+          <div class="sample-info">
+            <h4>Article or Blog Post Title One</h4>
+            <p>Add the publication, word count, or topic summary. e.g. "2,500-word SEO blog post — ranked #3 for target
+              keyword."</p><span class="sample-link">Read Sample ↗</span>
+          </div>
+        </a>
+        <a href="#" class="sample-card" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+          <div class="sample-icon">🔍</div>
+          <div class="sample-info">
+            <h4>Article or Blog Post Title Two</h4>
+            <p>Add the publication, word count, or topic summary. e.g. "Long-form SEO article targeting B2B
+              decision-makers."</p><span class="sample-link">Read Sample ↗</span>
+          </div>
+        </a>
+        <a href="#" class="sample-card" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+          <div class="sample-icon">✍️</div>
+          <div class="sample-info">
+            <h4>Article or Blog Post Title Three</h4>
+            <p>Add the publication, word count, or topic summary. e.g. "Guest post on content marketing for an industry
+              publication."</p><span class="sample-link">Read Sample ↗</span>
+          </div>
+        </a>
+        <a href="#" class="sample-card" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+          <div class="sample-icon">📊</div>
+          <div class="sample-info">
+            <h4>Article or Blog Post Title Four</h4>
+            <p>Add the publication, word count, or topic summary. e.g. "Data-driven SEO content piece for a tech
+              startup."</p><span class="sample-link">Read Sample ↗</span>
+          </div>
+        </a>
+        <a href="#" class="sample-card" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+          <div class="sample-icon">🌱</div>
+          <div class="sample-info">
+            <h4>Article or Blog Post Title Five</h4>
+            <p>Add the publication, word count, or topic summary. e.g. "Brand awareness blog post for top-of-funnel
+              audience."</p><span class="sample-link">Read Sample ↗</span>
+          </div>
+        </a>
+        <a href="#" class="sample-card" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+          <div class="sample-icon">💡</div>
+          <div class="sample-info">
+            <h4>Article or Blog Post Title Six</h4>
+            <p>Add the publication, word count, or topic summary. e.g. "How-to guide for a personal brand blog — ranked
+              page 1."</p><span class="sample-link">Read Sample ↗</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="section-sm">
+    <div class="container" style="text-align:center;">
+      <span class="section-label">✦ Work Together</span>
+      <h2>Like What You See?</h2>
+      <div class="divider" style="margin:1rem auto;"></div>
+      <p style="max-width:500px;margin:0 auto 2rem;">I'm open to new projects. Let's talk about what great copy can do
+        for your brand.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="index.html#contact" class="btn btn-primary">Get In Touch →</a>
+        <a href="assets/cv.pdf" class="btn btn-outline" download>Download CV ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="foot-ph"></div>
+  <script>
+    const _p = window.location.pathname, _f = _p.split('/').pop() || 'index.html', _sub = _p.includes('/portfolio/');
+    const _r = _sub ? '../' : '';
+    const NAV = '<nav id="mn"><div class="nav-inner"><a href="' + _r + 'index.html" class="nav-logo">Dana&nbsp;<span>Lazaris</span></a><ul class="nav-links" id="nl"><li><a href="' + _r + 'index.html"' + (_f === 'index.html' ? ' class="active"' : '') + '>Home</a></li><li><a href="' + _r + 'cv.html"' + (_f === 'cv.html' ? ' class="active"' : '') + '>CV</a></li><li><a href="' + _r + 'portfolio.html"' + (_f === 'portfolio.html' || _sub ? ' class="active"' : '') + '>Portfolio</a></li><li><a href="' + _r + 'index.html#contact">Contact</a></li><li><a href="' + _r + 'assets/cv.pdf" class="btn btn-primary" style="padding:0.5rem 1.2rem;font-size:0.72rem;" download>Download CV</a></li></ul><button class="hamburger" id="hb" aria-label="Menu"><span></span><span></span><span></span></button></div></nav>';
+    const FOOTER = '<footer><div class="container"><div class="footer-inner"><div class="footer-logo">Dana&nbsp;<span style="color:var(--sage-light)">Lazaris</span></div><ul class="footer-links"><li><a href="' + _r + 'index.html">Home</a></li><li><a href="' + _r + 'cv.html">CV</a></li><li><a href="' + _r + 'portfolio.html">Portfolio</a></li><li><a href="' + _r + 'index.html#contact">Contact</a></li></ul></div><p class="footer-copy">&copy; ' + new Date().getFullYear() + ' Dana&nbsp; Lazaris &middot; Copywriter</p></div></footer>';
+    document.getElementById('nav-ph').innerHTML = NAV;
+    document.getElementById('foot-ph').innerHTML = FOOTER;
+    setTimeout(() => {
+      document.getElementById('hb').addEventListener('click', () => document.getElementById('nl').classList.toggle('open'));
+      window.addEventListener('scroll', () => document.getElementById('mn').classList.toggle('scrolled', scrollY > 20));
+      document.querySelectorAll('.fade-up').forEach(el => new IntersectionObserver(([e]) => { if (e.isIntersecting) el.classList.add('visible') }, { threshold: 0.1 }).observe(el));
+    }, 50);
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        document.querySelectorAll('.project-card').forEach(c => {
+          c.style.display = (f === 'all' || (c.dataset.category || '').includes(f)) ? '' : 'none';
+        });
+      });
+    });</script>
+</body>
+
+</html>
