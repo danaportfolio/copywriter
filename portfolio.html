@@ -756,19 +756,20 @@
     .gallery-img {
       background: linear-gradient(135deg, var(--sage-pale), var(--sage-light));
       border-radius: 4px;
-      aspect-ratio: 16/10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       overflow: hidden;
+      position: relative;
       border: 1px solid var(--border)
     }
 
-    .gallery-img img {
-      width: auto;
-      height: 100%;
-     
-    }
+.gallery-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+
 
     .gallery-placeholder {
       display: flex;
